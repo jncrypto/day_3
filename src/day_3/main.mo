@@ -28,7 +28,6 @@ actor {
         let tmp = a[i];
         a[i] := a[j];
         a[j] := tmp;
-        // Transform our mutable array into an immutable array.
         return(a);
     };
 
@@ -52,6 +51,7 @@ actor {
     ** Challenge 3
     **
     *********************************************************************/
+    // Note: call using: dfx canister call day_3 seven '(vec{1;2;3;4})'
     public func seven(a : [Nat]) : async Text {
         for(v in a.vals()) {
             if(v == 7) return "Seven is found";
@@ -95,13 +95,7 @@ actor {
     ** Challenge 6
     **
     *********************************************************************/
-    // not working; no good documentation for this?
-    // getting error:
-    // type error [M0096], expression of type
-    //    (?Nat) -> Nat
-    // cannot produce expected type
-    //    Nat -> Nat
-    /*
+    // Note: call using: dfx canister call day_3 populate_array '(vec{opt 1;opt 2;opt 3;opt 4})'
     let nconv = func (n : ?Nat) : Nat {
         switch(n) {
             case (null) { return 0 };
@@ -109,10 +103,9 @@ actor {
         }
     };
 
-    public func populate_array<T>(array : [Nat]) : async [Nat] {
-        return(Array.map<Nat,Nat>(array, nconv));
+    public func populate_array(array : [?Nat]) : async [Nat] {
+        return(Array.map<?Nat,Nat>(array, nconv));
     };
-    */
 
     /*********************************************************************
     **
