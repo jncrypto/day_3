@@ -119,17 +119,18 @@ actor {
     ** Challenge 7
     **
     *********************************************************************/
-    // not working
-    /*
-    let sum = func (n : Nat) : Nat {
-        
+    var sum_all : Nat = 0;
+
+    let s = func (n : Nat) : Nat {
+        sum_all += n;
+        return(n);
     };
 
-    public func sum_of_array(array : [Nat]) : async [Nat] {
-        Array.map<Nat>(array, sum);
-        return array[array.size() - 1];
+    public func sum_of_array(array : [Nat]) : async Nat {
+        sum_all := 0;
+        var r = Array.map<Nat,Nat>(array, s);
+        return(sum_all);
     };
-    */
 
     /*********************************************************************
     **
