@@ -161,8 +161,17 @@ actor {
     ** Challenge 10
     **
     *********************************************************************/
-    /*public func contains<A>(array : [?Nat], a : A, ) : async Bool {
-       // WIP
-    };*/
+    // not working
+    let f = func (n : T) : Bool {
+        if(n == 'a') {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    public func contains<A>(array : [A], a : A, f : (A,A)) : async Bool {
+        return(Array.find<Nat>(array, f));
+    };
     
 };
